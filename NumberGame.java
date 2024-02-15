@@ -2,6 +2,49 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class NumberGame extends AbstractGame {
+    private static final Logger logger = LogManager.getLogger(NumberGame.class);
+
+    // Другие методы игры
+
+    @Override
+    public void inputValue(String input) {
+        // Логирование ввода
+        logger.info("Игрок ввел: " + input);
+
+        // Логика проверки и обработки ввода
+
+        // Пример логирования ответа
+        logger.info("Ввод: " + input + " - " + new Answer(bulls, cows));
+    }
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class NumberGame extends AbstractGame {
+    private List<String> gameHistory;
+
+    public NumberGame() {
+        gameHistory = new ArrayList<>();
+    }
+
+    public List<String> getGameHistory() {
+        return gameHistory;
+    }
+}
+
+public void restart() {
+    generateWord();
+    gameHistory.clear(); // Очистка истории
+    logger.info("Игра перезапущена. Новое число/слово задумано.");
+}
+
+
+
 public class NumberGame extends AbstractGame {
     public NumberGame() {
         generateWord();
@@ -67,6 +110,6 @@ public class NumberGame extends AbstractGame {
         NumberGame numberGame = new NumberGame();
         numberGame.start();
 
-        // Здесь можно добавить цикл for для управления ходами игры
+        
     }
 }
